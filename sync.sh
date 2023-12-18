@@ -1,8 +1,13 @@
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ICLOUD=$DIR/iCloud
+ICLOUD=~/Library/Mobile\ Documents/com~apple~CloudDocs/Preferences
 PREFS=~/Library/Preferences
+
+# If the iCloud preferences directory does not exist, create it.
+if [ ! -d "$ICLOUD" ]; then
+	mkdir "$ICLOUD"
+fi
 
 # If the first argument is push, and a second argument is a valid file, push that file to iCloud.
 if [ "$1" == "push" ] && [ -f "$2" ]; then
